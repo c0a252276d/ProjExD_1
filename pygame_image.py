@@ -16,7 +16,7 @@ def main():
     kk_img=pg.transform.flip(kk_img,True,False)#コウカトン反転
     kk_rct=kk_img.get_rect()
     kk_rct.center=300,200
-
+    
 
     tmr = 0
     while True:
@@ -25,16 +25,16 @@ def main():
         
         key_lst = pg.key.get_pressed()  # 練習10-3：キーの押下状態取得
         # print(key_lst[pg.K_UP], key_lst[pg.K_DOWN], key_lst[pg.K_LEFT], key_lst[pg.K_RIGHT])
+        y=[-1,0]
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0, -1))
+            y[1]-=1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0, +1))
+            y[1]+=1
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1, 0))
+            y[0]-=1
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((2, 0))
-        else: 
-            kk_rct.move_ip((-1,0))
+            y[0]+=2
+        kk_rct.move_ip(y)
         x = tmr%3200
         screen.blit(bg_img, [-x, 0])#練習5
         screen.blit(bg_img2, [-x+1600, 0])
